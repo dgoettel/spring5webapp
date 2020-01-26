@@ -77,23 +77,20 @@ public class Book {
         this.authors = authors;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Book book = (Book) o;
-
-        return id != null ? id.equals(book.id) : book.id == null;
+    public boolean equals(Object object) {
+        if (this == object) return true;
+        if (object == null || getClass() != object.getClass()) return false;
+        if (!super.equals(object)) return false;
+        Book book = (Book) object;
+        return java.util.Objects.equals(id, book.id);
     }
 
-    @Override
     public int hashCode() {
-        return id != null ? id.hashCode() : 0;
+        return java.util.Objects.hash(super.hashCode(), id);
     }
 
-    @Override
-    public String toString() {
+    @java.lang.Override
+    public java.lang.String toString() {
         return "Book{" +
                 "id=" + id +
                 ", title='" + title + '\'' +
